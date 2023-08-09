@@ -8,12 +8,15 @@ public class MensagemParaAlguem extends Mensagem {
         this.emailDestinatario = emailDestinatario;
     }
     public String getEmailDestinatario(){
-        return null;
+        return emailDestinatario;
     }
     public void setEmailDestinatario(String emailDestinatario){
-
+        this.emailDestinatario = emailDestinatario;
     }
     public String getTextoCompletoAExibir(){
-        return null;
+        if(super.ehAnonima()){
+        return "Mensagem para: " + this.emailDestinatario + "\n Mensagem: " + super.getTexto();
+        }
+        return "Mensagem de:" + super.getEmailRemetente() + "\n Para" + this.emailDestinatario + "\n Mensagem:" + super.getTexto();
     }
 }

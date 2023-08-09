@@ -4,10 +4,10 @@ public class MensagemParaTodos extends Mensagem{
     public MensagemParaTodos(String texto, String emailRemetente, boolean ehAnonima) {
         super(texto, emailRemetente, ehAnonima);
     }
-    public void MensagemParaTodos(String texto, String emailRemetente,  boolean anonima){
-
-    }
     public String getTextoCompletoAExibir(){
-        return null;
+        if(super.ehAnonima()){
+            return "Mensagem para todos" + "\n Mensagem:" + super.getTexto();
+        }
+        return "Mensagem de: " + super.getEmailRemetente() + " para todos" + "\n Mensagem:" + super.getTexto();
     }
 }
