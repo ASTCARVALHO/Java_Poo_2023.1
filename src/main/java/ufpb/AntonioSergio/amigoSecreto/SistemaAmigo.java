@@ -1,5 +1,6 @@
 package ufpb.AntonioSergio.amigoSecreto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SistemaAmigo {
@@ -19,12 +20,18 @@ public class SistemaAmigo {
     //todo
     }
     public List<Mensagem> pesquisaMensagensAnonimas(){
-        return null;
+       List<Mensagem> mensagensAnonimasPesquisa = new ArrayList<>();
+
+        for (Mensagem msg: this.mensagens) {
+            if(msg.ehAnonima()){
+                mensagensAnonimasPesquisa.add(msg);
+            }
+        }return mensagensAnonimasPesquisa;
     }
     public List<Mensagem> pesquisaTodasAsMensagens(){
         return null;
     }
-    public void configurarAmigoSecretoDe(String emailDaPessoa,String emailDoAmigoSorteado){
+    public void configuraAmigoSecretoDe(String emailDaPessoa,String emailDoAmigoSorteado){
 
     }
     public String  pesquisaAmigoSecreto(String emailDaPessoa){
