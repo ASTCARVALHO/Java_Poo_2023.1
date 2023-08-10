@@ -32,4 +32,7 @@ public class Amigo {
     public void setEmailAmigoSorteado(String emailAmigoSorteado) {
         this.emailAmigoSorteado = emailAmigoSorteado;
     }
+    public String toString(){
+        return "Nome: " + this.nome + "\n Email:" + this.email;
+    }
 }

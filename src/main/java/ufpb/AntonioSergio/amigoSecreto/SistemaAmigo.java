@@ -7,17 +7,30 @@ public class SistemaAmigo {
     private List<Mensagem> mensagens;
     private List<Amigo> amigos;
 
-    public void cadastraAmigo(String nomeAmigo, String emailAmigo){
-
+    public SistemaAmigo(){
+        this.amigos = new ArrayList<>();
+        this.mensagens = new ArrayList<>();
     }
-    public Amigo pesquisaAmigo  (String emailAmigo){
-        return null;
+    public void cadastraAmigo(String nomeAmigo, String emailAmigo){
+        Amigo novoAmigo = new Amigo(nomeAmigo, emailAmigo);
+        amigos.add(novoAmigo);
+    }
+    public Amigo pesquisaAmigo  (String emailAmigo) throws AmigoInexistenteException {
+        Amigo amigoPesquisado = null;
+        for (Amigo a : amigos) {
+            if (a.getEmail().equals(emailAmigo)) return amigoPesquisado = a;
+        }throw new AmigoInexistenteException("Amigo de email: " + emailAmigo + "não existe");
     }
     public void enviarMensagemParaTodos(String texto, String emailRemetente,boolean ehAnonima ){
+        MensagemParaTodos novaMensagemParaTodos = new MensagemParaTodos(texto,emailRemetente,ehAnonima);
+        novaMensagemParaTodos.getTextoCompletoAExibir();
+        mensagens.add(novaMensagemParaTodos);
 
     }
-    public void enviarMensagemParaAlguem(String texto, String emailRemetente, boolean ehAnonima){
-    //todo
+    public void enviarMensagemParaAlguem(String texto, String emailRemetente,String emailDestinatario, boolean ehAnonima){
+        MensagemParaAlguem novaMensagemParaAlguem = new MensagemParaAlguem(texto,emailRemetente,emailDestinatario,ehAnonima);
+        novaMensagemParaAlguem.getTextoCompletoAExibir();
+        mensagens.add(novaMensagemParaAlguem);
     }
     public List<Mensagem> pesquisaMensagensAnonimas(){
        List<Mensagem> mensagensAnonimasPesquisa = new ArrayList<>();
@@ -58,6 +71,13 @@ public class SistemaAmigo {
         }
 
         return null;
+    }
+    public List<Amigo> amigosParticipantes(){
+        List<Amigo> todosAmigos = new ArrayList<>();
+        for (Amigo a: amigos) {
+            todosAmigos.add(a);
+        }
+       return todosAmigos;
     }
 
 }
