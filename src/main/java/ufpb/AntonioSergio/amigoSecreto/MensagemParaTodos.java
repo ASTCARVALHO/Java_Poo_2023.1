@@ -6,8 +6,8 @@ public class MensagemParaTodos extends Mensagem{
     }
     public String getTextoCompletoAExibir(){
         if(super.ehAnonima()){
-            return "Mensagem para todos" + "\n Mensagem:" + super.getTexto();
+            return "Mensagem para todos" + "\n Mensagem:" + super.getTextoCompletoAExibir();
         }
-        return "Mensagem de: " + super.getEmailRemetente() + " para todos" + "\n Mensagem:" + super.getTexto();
+        return "Mensagem de: " + super.getEmailRemetente() + " para todos" + "\n Mensagem:" + super.getTextoCompletoAExibir();
     }
 }

@@ -1,8 +1,6 @@
 package amigoSecreto;
 
-import ufpb.AntonioSergio.amigoSecreto.Amigo;
-import ufpb.AntonioSergio.amigoSecreto.AmigoInexistenteException;
-import ufpb.AntonioSergio.amigoSecreto.SistemaAmigo;
+import ufpb.AntonioSergio.amigoSecreto.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,18 +13,34 @@ public class TesteSistemaAmigo {
         sistemaAmigo.cadastraAmigo("José", "jose@gmail.com");
         sistemaAmigo.cadastraAmigo("Maria", "maria@gmail.com");
         List<Amigo> todosAmigos = sistemaAmigo.amigosParticipantes();
-        System.out.println(todosAmigos.toString());
+
+
 
         try {
-            sistemaAmigo.configuraAmigoSecretoDe("jose@gmail.com", "mari@gmail.com");
+            sistemaAmigo.configuraAmigoSecretoDe("jose@gmail.com", "maria@gmail.com");
         } catch (AmigoInexistenteException a) {
             System.out.println(a.getMessage());
         }
         try {
-            sistemaAmigo.configuraAmigoSecretoDe("maria@gmail.com", "jose@gama.com");
+            sistemaAmigo.configuraAmigoSecretoDe("maria@gmail.com", "jose@gmail.com");
         } catch (AmigoInexistenteException a) {
             System.out.println(a.getMessage());
         }
+        try {
+            System.out.println(sistemaAmigo.pesquisaAmigoSecreto("jose@gmail.com"));
+        } catch (AmigoInexistenteException e){
+            System.out.println(e.getMessage());
+        }catch (AmigoNaoSorteadoException i){
+            System.out.println(i.getMessage());
+        }
+        sistemaAmigo.enviarMensagemParaAlguem("Ola maria","jose@gmail.com","maria@gmail.com", true);
+        sistemaAmigo.enviarMensagemParaAlguem("Ola jose","maria@gmail.com","jose@gmail.com",true);
+
+        for (Mensagem a: sistemaAmigo.pesquisaMensagensAnonimas()) {
+            System.out.println(a.getTextoCompletoAExibir());
+        }
+
+
 
 
     }

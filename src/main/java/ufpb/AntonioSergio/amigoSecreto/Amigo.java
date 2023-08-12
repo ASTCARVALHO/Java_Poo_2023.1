@@ -1,5 +1,7 @@
 package ufpb.AntonioSergio.amigoSecreto;
 
+import java.util.Objects;
+
 public class Amigo {
     private String nome;
     private String email;
@@ -7,6 +9,18 @@ public class Amigo {
     public Amigo(String nomeAmigo, String emailAmigo){
         this.nome = nomeAmigo;
         this.email = emailAmigo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Amigo amigo)) return false;
+        return getEmail().equals(amigo.getEmail());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getEmail());
     }
 
     public String getNome() {
@@ -33,6 +47,6 @@ public class Amigo {
         this.emailAmigoSorteado = emailAmigoSorteado;
     }
     public String toString(){
-        return "Nome: " + this.nome + "\n Email:" + this.email;
+        return "\n Nome: " + this.nome + "\n Email:" + this.email;
     }
 }

@@ -11,6 +11,9 @@ public class SistemaAmigo {
         this.amigos = new ArrayList<>();
         this.mensagens = new ArrayList<>();
     }
+    public List<Amigo> getAmigos(){
+        return this.amigos;
+    }
     public void cadastraAmigo(String nomeAmigo, String emailAmigo){
         Amigo novoAmigo = new Amigo(nomeAmigo, emailAmigo);
         amigos.add(novoAmigo);
@@ -56,14 +59,14 @@ public class SistemaAmigo {
                 amigo = a;
             }
         }
-        if(amigo == null) throw new AmigoInexistenteException("Amigo de email:" + emailDaPessoa + "não encontrado");
+        if(amigo == null) throw new AmigoInexistenteException("Amigo de email: " + emailDaPessoa + " não encontrado");
     }
     public String  pesquisaAmigoSecreto(String emailDaPessoa) throws AmigoNaoSorteadoException, AmigoInexistenteException{
         Amigo amigo = null;
         for (Amigo a: this.amigos) {
             if(emailDaPessoa.equals(a.getEmail())) amigo = a;
             if(amigo == null){
-                throw new AmigoInexistenteException("Amigo de email:" + emailDaPessoa + "não encontrado");
+                throw new AmigoInexistenteException("Amigo de email: " + emailDaPessoa + " não encontrado");
             } else if (amigo.getEmailAmigoSorteado() == null) {
                 throw new AmigoNaoSorteadoException("Amigo secreto de: " + emailDaPessoa + " ainda não foi sorteado");
             }else

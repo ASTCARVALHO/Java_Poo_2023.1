@@ -11,7 +11,7 @@ public abstract class Mensagem {
         this.ehAnonima=ehAnonima;
     }
 
-    public String getTexto() {
+    public String getTextoCompletoAExibir() {
         return texto;
     }
 
