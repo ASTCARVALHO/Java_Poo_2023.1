@@ -1,9 +1,6 @@
 package ufpb.AntonioSergio.amigoSecreto;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class SistemaAmigoMap {
@@ -25,5 +22,16 @@ public class SistemaAmigoMap {
         Amigo amigoPesquisado = null;
         if(!amigos.containsKey(emailAmigo)) throw new AmigoInexistenteException();
         return amigos. get(emailAmigo);
+    }
+    public void enviarMensagemParaTodos(String texto,String emailRemetente, boolean ehAnonima){
+        MensagemParaTodos novaMensagemParaTodos = new MensagemParaTodos(texto,emailRemetente,ehAnonima);
+        novaMensagemParaTodos.getTextoCompletoAExibir();
+        mensagens.add(novaMensagemParaTodos);
+    }
+    public void configurarAmigoSecreto(String emailDaPessoa, String emailDoAmigoSorteado) throws AmigoInexistenteException{
+        if(!amigos.containsKey(emailDaPessoa)) throw new AmigoInexistenteException();
+        if(!amigos.containsKey(emailDoAmigoSorteado))throw  new AmigoInexistenteException();
+        Amigo amigo = amigos.get(emailDaPessoa);
+        amigo.setEmailAmigoSorteado(emailDoAmigoSorteado);
     }
 }
