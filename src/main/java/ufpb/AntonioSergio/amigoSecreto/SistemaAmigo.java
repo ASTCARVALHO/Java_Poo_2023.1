@@ -14,7 +14,10 @@ public class SistemaAmigo {
     public List<Amigo> getAmigos(){
         return this.amigos;
     }
-    public void cadastraAmigo(String nomeAmigo, String emailAmigo){
+    public void cadastraAmigo(String nomeAmigo, String emailAmigo) throws AmigoJaExisteException   {
+        for (Amigo a: amigos) {
+            if(a.getEmail().equals(emailAmigo)) throw new AmigoJaExisteException();
+        }
         Amigo novoAmigo = new Amigo(nomeAmigo, emailAmigo);
         amigos.add(novoAmigo);
     }

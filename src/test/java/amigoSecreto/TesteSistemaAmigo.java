@@ -10,9 +10,12 @@ public class TesteSistemaAmigo {
     public static void main(String[] args) {
         SistemaAmigo sistemaAmigo = new SistemaAmigo();
 
-        sistemaAmigo.cadastraAmigo("José", "jose@gmail.com");
-        sistemaAmigo.cadastraAmigo("Maria", "maria@gmail.com");
-        List<Amigo> todosAmigos = sistemaAmigo.amigosParticipantes();
+        try {
+            sistemaAmigo.cadastraAmigo("José", "jose@gmail.com");
+            sistemaAmigo.cadastraAmigo("Maria", "maria@gmail.com");
+        }catch (AmigoJaExisteException a){
+            System.out.println(a.getMessage());
+        }
 
 
 
