@@ -21,4 +21,9 @@ public class SistemaAmigoMap {
             amigos.put(emailAmigo,novoAmigo);
         }
     }
+    public Amigo pesquisarAmigo(String emailAmigo) throws AmigoInexistenteException{
+        Amigo amigoPesquisado = null;
+        if(!amigos.containsKey(emailAmigo)) throw new AmigoInexistenteException();
+        return amigos. get(emailAmigo);
+    }
 }
