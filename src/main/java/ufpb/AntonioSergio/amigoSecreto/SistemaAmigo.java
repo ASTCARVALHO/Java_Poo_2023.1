@@ -78,12 +78,5 @@ public class SistemaAmigo {
 
         return null;
     }
-    public List<Amigo> amigosParticipantes(){
-        List<Amigo> todosAmigos = new ArrayList<>();
-        for (Amigo a: amigos) {
-            todosAmigos.add(a);
-        }
-       return todosAmigos;
-    }
 
 }
