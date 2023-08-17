@@ -10,9 +10,13 @@ public class TesteSistemaAmigoGUI {
         SistemaAmigo sistemaAmigo = new SistemaAmigo();
         int qntAmigos = Integer.parseInt(JOptionPane.showInputDialog(null, "Qantidade de amigos: "));
         for (int i = 0; i < qntAmigos; i++) {
+            try {
             String nome = JOptionPane.showInputDialog("Nome: ");
             String email = JOptionPane.showInputDialog("email: ");
             sistemaAmigo.cadastraAmigo(nome, email);
+            }catch (AmigoJaExisteException e){
+                System.out.println(e.getMessage());
+            }
         }
 
         for (Amigo a: sistemaAmigo.getAmigos()) {
