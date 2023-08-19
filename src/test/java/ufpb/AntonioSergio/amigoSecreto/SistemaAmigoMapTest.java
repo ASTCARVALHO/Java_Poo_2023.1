@@ -28,4 +28,35 @@ class SistemaAmigoMapTest {
         assertTrue(mensagensEncontradas.get(0).getEmailRemetente().equals("antonio@gmail.com"));
 
     }
+    @Test
+    void enviarMensagemParaAlguem(){
+        Amigo a = new Amigo("Antonio", "antonio@gmail.com");
+        Amigo b = new Amigo("fulano", "fulano@gmail.com");
+        sistemaAmigoMap.enviarMensagemParaAlguem("oi",a.getEmail(),b.getEmail(),false);
+        List<Mensagem> mensagensEncontradas = sistemaAmigoMap.pesquisaTodasAsMensagens();
+        assertTrue(mensagensEncontradas.size() == 1);
+        assertTrue(mensagensEncontradas.get(0).getEmailRemetente().equals("antonio@gmail.com"));
+    }
+    @Test
+    void pesquisarMensagensAnonimas(){
+
+        assertTrue(sistemaAmigoMap.pesquisaMensagensAnonimas().isEmpty());
+        Amigo a = new Amigo("Antonio", "antonio@gmail.com");
+        Amigo b = new Amigo("fulano", "fulano@gmail.com");
+        sistemaAmigoMap.enviarMensagemParaAlguem("oi",a.getEmail(),b.getEmail(),false);
+        assertTrue(sistemaAmigoMap.pesquisaMensagensAnonimas().isEmpty());
+        sistemaAmigoMap.enviarMensagemParaAlguem("oi",a.getEmail(),b.getEmail(),true);
+        assertTrue(sistemaAmigoMap.pesquisaMensagensAnonimas().size() == 1 );
+    }
+    @Test
+    void pesquisaTodasAsMensagens(){
+        assertTrue(sistemaAmigoMap.pesquisaTodasAsMensagens().isEmpty());
+        Amigo a = new Amigo("Antonio", "antonio@gmail.com");
+        sistemaAmigoMap.enviarMensagemParaTodos("oi",a.getEmail(),true);
+        assertTrue(sistemaAmigoMap.pesquisaTodasAsMensagens().size() == 1);
+        sistemaAmigoMap.enviarMensagemParaTodos("oi",a.getEmail(),false);
+        assertTrue(sistemaAmigoMap.pesquisaTodasAsMensagens().size() == 2);
+
+    }
+
 }
