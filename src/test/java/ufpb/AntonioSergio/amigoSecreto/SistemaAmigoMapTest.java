@@ -58,5 +58,15 @@ class SistemaAmigoMapTest {
         assertTrue(sistemaAmigoMap.pesquisaTodasAsMensagens().size() == 2);
 
     }
+    @Test
+    void configuraEPesquisaAmigoSecreto() throws AmigoNaoSorteadoException, AmigoInexistenteException, AmigoJaExisteException {
+
+            sistemaAmigoMap.cadastrarAmigo("Antonio","antonio@gmail.com");
+            sistemaAmigoMap.cadastrarAmigo("Fulano", "fulano@gmail.com");
+            sistemaAmigoMap.configurarAmigoSecreto("antonio@gmail.com","fulano@gmail.com");
+            sistemaAmigoMap.configurarAmigoSecreto("fulano@gmail.com","antonio@gmail.com");
+            assertEquals("antonio@gmail.com", sistemaAmigoMap.pesquisaAmigoSecreto("fulano@gmail.com"));
+            assertEquals("fulano@gmail.com", sistemaAmigoMap.pesquisaAmigoSecreto("antonio@gmail.com"));
+    }
 
 }
