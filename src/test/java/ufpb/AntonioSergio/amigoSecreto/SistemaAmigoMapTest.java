@@ -1,5 +1,6 @@
 package ufpb.AntonioSergio.amigoSecreto;
 
+<<<<<<< HEAD
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,6 +29,25 @@ class SistemaAmigoMapTest {
         assertTrue(mensagensEncontradas.get(0).getEmailRemetente().equals("antonio@gmail.com"));
 
 
+=======
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SistemaAmigoMapTest {
+
+    @Test
+    void cadastrarAmigo() {
+
+    }
+
+    @Test
+    void pesquisarAmigo() {
+    }
+
+    @Test
+    void enviarMensagemParaTodos() {
+>>>>>>> origin/master
     }
 
     @Test
