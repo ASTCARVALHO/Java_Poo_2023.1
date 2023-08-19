@@ -12,7 +12,7 @@ public class SistemaAmigoMap {
         this.amigos = new HashMap<>();
     }
 
-    public void CadastrarAmigo(String nomeAmigo, String emailAmigo) throws AmigoJaExisteException{
+    public void cadastrarAmigo(String nomeAmigo, String emailAmigo) throws AmigoJaExisteException{
         if(amigos.containsKey(emailAmigo)) throw new AmigoJaExisteException();
         else{ Amigo novoAmigo = new Amigo(nomeAmigo,emailAmigo);
             amigos.put(emailAmigo,novoAmigo);
