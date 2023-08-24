@@ -10,7 +10,7 @@ public abstract class Cliente {
          this.endereco = endereco;
          this.email = email;
     }
-
+    public abstract String getId();
     public String getNome() {
         return nome;
     }
