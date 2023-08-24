@@ -1,9 +1,15 @@
 package ufpb.AntonioSergio.sistemaComercio;
 
-public class Cliente {
+public abstract class Cliente {
     private String nome;
     private String endereco;
     private String email;
+
+     Cliente(String nome,String endereco,String email){
+         this.nome = nome;
+         this.endereco = endereco;
+         this.email = email;
+    }
 
     public String getNome() {
         return nome;
