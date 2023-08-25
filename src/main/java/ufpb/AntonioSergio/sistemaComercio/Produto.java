@@ -1,5 +1,7 @@
 package ufpb.AntonioSergio.sistemaComercio;
 
+import java.util.List;
+
 public class Produto {
    private String codigo;
    private String descricao;
