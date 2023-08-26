@@ -1,5 +1,6 @@
 package ufpb.AntonioSergio.sistemaComercio;
 
+import java.text.CollationElementIterator;
 import java.util.*;
 
 public class SistemaComercioMap {
@@ -28,8 +29,8 @@ public class SistemaComercioMap {
         if(clientes.containsKey(id)) return clientes.get(id);
         else throw new ClienteNaoExisteException("Cliente não existe");
     }
-    public List<Produto> pesquisaProdutosDaCategoria(CategoriaProduto categoriaProduto){
-        List<Produto> produtosDaCategoriaPesquisada = new ArrayList<>();
+    public Collection<Produto> pesquisaProdutosDaCategoria(CategoriaProduto categoriaProduto){
+        Collection<Produto> produtosDaCategoriaPesquisada = new ArrayList<>();
         for (Map.Entry<String,Produto> entrada : produtos.entrySet()){
             Produto produto = entrada.getValue();
             if (produto.getCategoriaProduto().equals(categoriaProduto)) produtosDaCategoriaPesquisada.add(produto);
