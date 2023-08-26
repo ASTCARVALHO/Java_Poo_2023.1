@@ -9,11 +9,12 @@ public class Produto {
    private int qntEstoque;
    private CategoriaProduto categoriaProduto;
 
-   public Produto(String codigo, String descricao, double precoVenda, int qntEstoque) {
+   public Produto(String codigo, String descricao, double precoVenda, int qntEstoque,CategoriaProduto categoriaProduto) {
       this.codigo = codigo;
       this.descricao = descricao;
       this.precoVenda = precoVenda;
       this.qntEstoque = qntEstoque;
+      this.categoriaProduto = categoriaProduto;
    }
 
    public Produto() {
