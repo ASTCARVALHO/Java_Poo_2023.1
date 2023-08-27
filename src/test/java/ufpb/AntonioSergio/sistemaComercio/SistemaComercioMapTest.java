@@ -14,12 +14,11 @@ class SistemaComercioMapTest {
     @Test
     void cadastrarEpesquisarProduto(){
         Produto p1 = new Produto("1","arroz", 5.00,10,CategoriaProduto.ALIMENTO);
-        Produto p2 = new Produto("2","macarrão", 3.00,10,CategoriaProduto.ALIMENTO);
         sistemaComercioMap.cadastrarProduto(p1);
-        sistemaComercioMap.cadastrarProduto(p2);
-        assertEquals(2,sistemaComercioMap.pesquisaProdutosDaCategoria(CategoriaProduto.ALIMENTO).size());
+        assertEquals(1,sistemaComercioMap.pesquisaProdutosDaCategoria(CategoriaProduto.ALIMENTO).size());
         try {
             assertEquals("arroz",sistemaComercioMap.pesquisaProduto("1").getDescricao());
+            assertTrue(sistemaComercioMap.existeProduto(p1));
         }catch (ProdutoNaoExisteException e){
             System.out.println(e.getMessage());
         }

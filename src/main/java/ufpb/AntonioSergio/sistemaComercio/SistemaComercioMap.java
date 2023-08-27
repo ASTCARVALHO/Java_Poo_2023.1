@@ -20,17 +20,16 @@ public class SistemaComercioMap {
         return false;
     }
     public Produto pesquisaProduto(String codigoProduto) throws ProdutoNaoExisteException {
-        Produto produtoPesquisado = null;
-        if (!produtos.containsKey(codigoProduto)) throw new ProdutoNaoExisteException("Produto não existe");
-        else return produtoPesquisado = produtos.get(codigoProduto);
+        if (!existeProduto(produtos.get(codigoProduto))) throw new ProdutoNaoExisteException("Produto não existe");
+        return produtos.get(codigoProduto);
     }
     public boolean existeCliente(Cliente cliente){
         if(clientes.containsKey(cliente.getId())) return true;
         return false;
     }
     public Cliente pesquisaCliente(String id) throws ClienteNaoExisteException{
-        if(clientes.containsKey(id)) return clientes.get(id);
-        else throw new ClienteNaoExisteException("Cliente não existe");
+        if(!existeCliente(clientes.get(id))) throw new ClienteNaoExisteException("Cliente não encontrado");
+        return clientes.get(id);
     }
     public Collection<Produto> pesquisaProdutosDaCategoria(CategoriaProduto categoriaProduto){
         Collection<Produto> produtosDaCategoriaPesquisada = new ArrayList<>();
