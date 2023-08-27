@@ -11,6 +11,9 @@ public class SistemaComercioMap {
         this.produtos = new HashMap<>();
         this.clientes = new HashMap<>();
     }
+    public void cadastrarProduto(Produto produto){
+        if(!produtos.containsKey(produto.getCodigo())) produtos.put(produto.getCodigo(),produto);
+    }
 
     public boolean existeProduto(Produto produto){
         if(produtos.containsKey(produto)) return true;
